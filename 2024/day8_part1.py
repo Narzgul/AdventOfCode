@@ -1,3 +1,6 @@
+from duplicity.config import count
+
+
 def set_string_at_pos(string, pos, char):
     return string[:pos] + char + string[pos + 1:]
 
@@ -12,7 +15,6 @@ for y in range(len(puzzle_input)):
             if all_antennas.get(puzzle_input[y][x]) is None: all_antennas[puzzle_input[y][x]] = []
             all_antennas[puzzle_input[y][x]].append((x, y))
 
-print(all_antennas)
 for freq in all_antennas:
     for antenna1 in all_antennas[freq]:
         for antenna2 in all_antennas[freq]:
@@ -24,8 +26,5 @@ for freq in all_antennas:
                         puzzle_input[antinode[1]] = set_string_at_pos(puzzle_input[antinode[1]], antinode[0], "#")
 
 all_antinodes = 0
-for line in puzzle_input:
-    for char in line:
-        if char == "#": all_antinodes += 1
-
+for line in puzzle_input: all_antinodes += line.count("#")
 print(all_antinodes)

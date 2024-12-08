@@ -14,7 +14,7 @@ for i in range(len(puzzle_input)):
 
 direc = 'u'
 while True:
-    if y >= len(puzzle_input) or y < 0 or x >= len(puzzle_input[y]) or x < 0: break
+    if not (0 <= y < len(puzzle_input) and 0 <= x < len(puzzle_input[y])): break
     puzzle_input[y] = set_string_at_pos(puzzle_input[y], x, "X")
     match direc:
         case 'u':
@@ -38,9 +38,6 @@ while True:
                 x -= 1
                 direc = 'd'
 
-amount_x = 0
-for i in range(len(puzzle_input)):
-    for j in range(len(puzzle_input[i])):
-        if puzzle_input[i][j] == "X": amount_x += 1
-
-print(amount_x)
+all_x = 0
+for line in puzzle_input: all_x += line.count("X")
+print(all_x)
