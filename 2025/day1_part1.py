@@ -1,4 +1,4 @@
-with open("inputs/day1.txt") as puzzle_input:
+with open("inputs/day1_input.txt") as puzzle_input:
     pos = 50
     num_zeros = 0
     for line in puzzle_input:
